@@ -106,7 +106,6 @@ void mat_math::mult_thrd_multi(Matrix& mat1, Matrix& mat2)
 	int N = mat2.get_width();
 	int K = mat1.get_width();
 
-	std::vector<std::vector<int>> mat2_transpose
 
 	int i, j, k, sum;
 	#pragma omp parallel for private(i,j,k, sum) shared(mat1,mat2,output)
