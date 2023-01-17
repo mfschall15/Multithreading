@@ -10,10 +10,12 @@ std::vector<std::vector<int>> mat_math::Matrix::get_values()
 
 void mat_math::Matrix::set_values() {
 
-
+	int temp;
 	for (int i = 0; i < values.size(); i++) {
 		for (int j = 0; j < values[i].size(); j++) {
-			values[i][j] = (std::rand() % 9) + 1;
+			temp = (std::rand() % 9) + 1;
+			values[i][j] = temp;
+			values_trans[j][i] = temp;
 		}
 	}
 }
@@ -26,6 +28,7 @@ void mat_math::Matrix::print_values(bool ignore) {
 		for (int i = 0; i < values.size(); i++) {
 			for (int j = 0; j < values[i].size(); j++) {
 				std::cout << values[i][j] << ",";
+
 			}
 			std::cout << std::endl;
 		}
@@ -71,10 +74,11 @@ void mat_math::sing_thrd_multi(Matrix& mat1, Matrix& mat2)
 				for (k = 0; k < K; ++k)
 				{
 
-					 sum += mat1.values[i][k] * mat2.values[k][j];
+					 sum += mat1.values[i][k] * mat2.values_trans[j][k];
 
 				}
 				output.values[i][j] =  sum;
+				output.values_trans[j][i] = sum;
 				
 			}
 		}
@@ -117,10 +121,11 @@ void mat_math::mult_thrd_multi(Matrix& mat1, Matrix& mat2)
 			for (k = 0; k < K; ++k)
 			{
 
-				sum += mat1.values[i][k] * mat2.values[k][j];
+				sum += mat1.values[i][k] * mat2.values_trans[j][k];
 
 			}
 			output.values[i][j] = sum;
+			output.values_trans[j][i] = sum;
 
 		}
 	}

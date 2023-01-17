@@ -3,7 +3,7 @@
 
 #include "Matrix_multiplication.h"
 
-// set this to true to print matrix and confirm correct.
+// set this to false to print matrix and confirm correct.
 bool ignore = true;
 
 int main()
@@ -12,8 +12,8 @@ int main()
 	srand(time(NULL));
 
 	//set create matrix objext with height and width. Generates with random values
-	mat_math::Matrix mat1(1024, 1024);
-	mat_math::Matrix mat2(1024, 1024);
+	mat_math::Matrix mat1(1000, 1000);
+	mat_math::Matrix mat2(1000, 1000);
 	if (!ignore) {
 		std::cout << "mat1 values: " << std::endl;
 		mat1.print_values(ignore);

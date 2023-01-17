@@ -19,13 +19,17 @@ namespace mat_math {
 	public:
 
 		std::vector<std::vector<int>> values;
+		std::vector<std::vector<int>> values_trans;
+
 		Matrix() = default;
 
 		Matrix(int N, int M) {
 			height = N;
 			width = M;
 			std::vector<std::vector<int>> m_temp(height, std::vector<int>(width, 0));
+			std::vector<std::vector<int>> m_temp_trans(width, std::vector<int>(height, 0));
 			values = m_temp;
+			values_trans = m_temp_trans;
 			set_values();
 		}
 		/*
